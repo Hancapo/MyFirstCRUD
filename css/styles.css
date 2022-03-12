@@ -1,0 +1,76 @@
+.TituloPro{
+    font-size: 40px;
+    color: rgb(172, 20, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    flex-wrap: wrap;
+    
+
+}
+
+.Top{
+    display: grid;
+    background-color: rgb(208, 226, 51);
+    height: 300px;
+    border: 3px;
+    border-color: rgb(197, 193, 255);
+    border-style: dashed;
+}
+
+.Mid{
+    display: flex;
+    background-color:rgb(244 165 165);
+    height: 450px;
+    flex-wrap: wrap;
+}
+
+.Tablita{
+    display: flex;
+    background-color:rgb(133, 57, 204);
+    height: 500px;
+}
+
+.Evan{
+    display: flex;
+    justify-content: center;
+}
+
+.h1_{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+
+}
+
+.Campos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap:wrap ;
+}
+
+.fieldos{
+    margin: 10px;
+}
+
+.Creare{
+    display: flex;
+    margin: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Cartita{
+    margin: 15px;
+}
+
+.Lower{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #69dc6a;
+    flex-wrap: wrap;
+}
