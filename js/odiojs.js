@@ -110,40 +110,45 @@ function EliminarPorId(id_, PerArr){
 
 function EditarPorId(id_, PerArr){
 
-    let EditarPers = PerArr.filter(element => element.id == id_)[0]
+    if(document.getElementsByClassName('Creare')[0].childNodes.length != 2){
+        let EditarPers = PerArr.filter(element => element.id == id_)[0]
 
 
-    document.getElementById('Nombre').value = EditarPers.nombre
-    document.getElementById('Edad').value = EditarPers.edad
-    var SeleccionarSex = document.getElementById('SexSelect')
-    let numerito = 0
+        document.getElementById('Nombre').value = EditarPers.nombre
+        document.getElementById('Edad').value = EditarPers.edad
+        var SeleccionarSex = document.getElementById('SexSelect')
+        let numerito = 0
 
-    for (let i = 0; i < SeleccionarSex.length; i++) {
-        if(SeleccionarSex[i].innerText == EditarPers.sexo){
-            numerito = i
-            break
+        for (let i = 0; i < SeleccionarSex.length; i++) {
+            if(SeleccionarSex[i].innerText == EditarPers.sexo){
+                numerito = i
+                break
+            }
         }
+
+        document.getElementById('SexSelect').selectedIndex = numerito
+
+        //Modo edición
+
+        botonAgregar = document.getElementById('btnAgregar')
+
+        botonGuardado = GetAddButtonBack(botonAgregar)
+
+        SeccionCrear = document.getElementsByClassName('Creare')[0]
+
+        //Eliminar botón agregar
+
+        SeccionCrear.removeChild(botonAgregar)
+
+        botonEditar = `<button type="button" id="btnConfirmarEdicion" onclick="ConfirmarEdicion(${EditarPers.id}, ListaPersona)" class=" fieldos btn btn-success">Guardar cambios</button>`
+        botonCancelar = `<button type="button" id="btnCancelarEdicion" onclick="ModoCreacion()" class="fieldos btn btn-danger">Cancelar</button>`
+
+        SeccionCrear.innerHTML = botonEditar
+        SeccionCrear.innerHTML += botonCancelar
+
+        BlockEditandDelete(true)
     }
-
-    document.getElementById('SexSelect').selectedIndex = numerito
     
-    //Modo edición
-
-    botonAgregar = document.getElementById('btnAgregar')
-
-    botonGuardado = GetAddButtonBack(botonAgregar)
-
-    SeccionCrear = document.getElementsByClassName('Creare')[0]
-
-    //Eliminar botón agregar
-
-    SeccionCrear.removeChild(botonAgregar)
-
-    botonEditar = `<button type="button" id="btnConfirmarEdicion" onclick="ConfirmarEdicion(${EditarPers.id}, ListaPersona)" class=" fieldos btn btn-success">Guardar cambios</button>`
-    botonCancelar = `<button type="button" id="btnCancelarEdicion" onclick="ModoCreacion()" class="fieldos btn btn-danger">Cancelar</button>`
-
-    SeccionCrear.innerHTML = botonEditar
-    SeccionCrear.innerHTML += botonCancelar
 
 
     
@@ -181,12 +186,8 @@ function ConfirmarEdicion(_id, PerArr){
 
     ListarPersona(ListaPersona)
 
-
     //Modo edición
-
     ModoCreacion()
-
-
 
 
 }
@@ -210,4 +211,18 @@ function ModoCreacion(){
     SeccionCrear.appendChild(botonGuardado)
 
     EmptyFields()
+    BlockEditandDelete(false)
+
+}
+
+
+function BlockEditandDelete(activar){
+    CardList = document.getElementById("ListadoCard")
+
+    CardList.childNodes.forEach(x => {
+        x.childNodes[1].childNodes[9].disabled = activar
+        x.childNodes[1].childNodes[11].disabled = activar
+    } )
+
+
 }
