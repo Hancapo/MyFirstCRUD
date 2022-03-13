@@ -52,7 +52,7 @@ function CrearPersona(){
         validacion = validacion + 1
     }
 
-    if(_Sexo == "Femenino" || "Masculino"){
+    if(_Sexo != "Elegir"){
         validacion = validacion + 1
 
     }
